@@ -26,16 +26,16 @@ const MessageList = () => { // 함수형 컴포넌트 이름은 대문자로 시
               <th>
                 <MdCheckBoxOutlineBlank />
               </th>
-              <th>메세지 코드번호</th>
+              <th>쪽지 코드번호</th>
               <th>발송인</th>
               <th>수신인</th>
-              <th>메세지 상태</th>
+              <th>쪽지 상태</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td colSpan={5} className="no-data">
-                메세지가 없습니다.
+                쪽지가 없습니다.
               </td>
             </tr>
           </tbody>

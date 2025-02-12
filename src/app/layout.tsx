@@ -8,8 +8,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: '사이트 관리자',
-  description: '설명...',
+  title: 'ADMIN - 팀2',
+  description: '설명명',
 }
 
 export default async function RootLayout({
@@ -18,6 +18,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const userInfo = await getUserInfo()
+
   return (
     <html lang="ko">
       <body>
@@ -25,7 +26,10 @@ export default async function RootLayout({
           <UserProvider _userInfo={userInfo}>
             <Header />
             <main className="main-content">
-              <CommonProvider>{children}</CommonProvider>
+              <CommonProvider>
+                {children}
+                {/* <Footer /> */}
+              </CommonProvider>
             </main>
           </UserProvider>
         </StyledComponentsRegistry>

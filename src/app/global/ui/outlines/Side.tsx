@@ -52,7 +52,13 @@ const Side = () => {
         href="/message/setting/list"
         className={classNames({ on: menuCode === 'message' })}
       >
-        메세지 관리
+        쪽지 관리
+      </a>
+      <a
+        href="/message/"
+        className={classNames({ on: menuCode === 'message' })}
+      >
+         관리
       </a>
     </StyledMenus>
   )

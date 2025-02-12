@@ -35,7 +35,7 @@ const MessageStatus = () => {
           <tbody>
             <tr>
               <td colSpan={5} className="no-data">
-                메세지가 없습니다.
+                쪽지가 없습니다.
               </td>
             </tr>
           </tbody>

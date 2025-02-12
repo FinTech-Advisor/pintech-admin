@@ -2,7 +2,7 @@
 import React, { useState, useCallback, useActionState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import JoinForm from '../components/JoinForm'
-import { processJoin } from '../../services/actions'
+import { processJoin } from '../services/actions'
 
 const JoinContainer = () => {
   const searchParams = useSearchParams()

@@ -5,7 +5,7 @@ import MessageStatusContainer from "../containers/MessageStatusContainer"
 const MessageStatus= () => {
   return (
         <>
-          <MainTitle>메세지 상태설정</MainTitle>
+          <MainTitle>쪽지 상태설정</MainTitle>
           <MessageStatusContainer />
         </>
       )

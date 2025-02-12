@@ -6,8 +6,8 @@ export const menus = {
       { code: 'configEdit', name: '게시판 수정', url: '/board/config/edit/[bid]' },
       { code: 'list', name: '게시글 관리', url: '/board/list' }],
     message: [
-      { code: 'messageList', name : '메세지 목록', url: '/message/setting/list'},
-      { code: 'messageStatus', name : '메세지 상태설정', url: '/message/setting/status'}]
+      { code: 'messageList', name : '쪽지 목록', url: '/message/setting/list'},
+      { code: 'messageStatus', name : '쪽지 상태설정', url: '/message/setting/status'}]
     
     
   }

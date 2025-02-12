@@ -5,7 +5,7 @@ import MessageListContainer from "../containers/MessageListContainer"
 const MessageList = () => {
   return (
       <>
-        <MainTitle>메세지 관리</MainTitle>
+        <MainTitle>쪽지 관리</MainTitle>
         <MessageListContainer />
       </>
     )

@@ -10,9 +10,9 @@ import apiRequest from '@/app/global/libs/apiRequest'
  * @returns
  */
 export const updateBoard = async (params, formData: FormData) => {
-  let errors = {}
+  let errors : any = {}
   let hasErrors = false
-  const form = {}
+  const form : any= {}
   for (const [k, v] of formData.entries()) {
     if (k.includes('$ACTION')) continue
 
@@ -26,13 +26,14 @@ export const updateBoard = async (params, formData: FormData) => {
   }
 
   for (const [field, msg] of Object.entries(requiredFields)) {
-    const value = formData.get(field)
-    if (!value || !value.trim()) {
-      errors[field] = errors[field] ?? []
-      errors[field].push(msg)
-      hasErrors = true
+    const value = formData.get(field);
+    if (!value || (typeof value === 'string' && !value.trim())) {
+      errors[field] = errors[field] ?? [];
+      errors[field].push(msg);
+      hasErrors = true;
     }
-  }
+}
+
   // 필수항목 검증 E
 
   // 서버 요청 처리 S

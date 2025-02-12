@@ -1,4 +1,5 @@
 'use client'
+
 import React, {
   useState,
   useCallback,
@@ -11,6 +12,7 @@ import useMenuCode from '@/app/global/hooks/useMenuCode'
 import { getBoard } from '../services/actions'
 
 const initialValue = {
+
   mode: 'add',
   open: false,
   useEditor: false,
@@ -18,7 +20,7 @@ const initialValue = {
   useAttachFile: false,
   useComment: false,
   listUnderView: false,
-  locationAfterWrting: 'list',
+  locationAfterWriting: 'list',
   skin: 'default',
   listAuthority: 'ALL',
   viewAuthority: 'ALL',
@@ -28,8 +30,10 @@ const initialValue = {
 
 const ConfigContainer = ({ bid }: { bid?: string | undefined } | undefined) => {
   useMenuCode('board', 'configWrite')
+
   const [form, setForm] = useState(initialValue)
-  const actionState = useActionState(updateBoard)
+
+  const actionState = useActionState(updateBoard, undefined)
 
   useLayoutEffect(() => {
     ;(async () => {
@@ -53,11 +57,16 @@ const ConfigContainer = ({ bid }: { bid?: string | undefined } | undefined) => {
     setForm((form) => ({ ...form, [field]: value }))
   }, [])
 
+  const onReset = useCallback(() => {
+    setForm(initialValue)
+  }, [])
+
   return (
     <ConfigForm
       form={form}
       onChange={onChange}
       onClick={onClick}
+      onReset={onReset}
       actionState={actionState}
     />
   )

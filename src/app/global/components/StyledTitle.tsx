@@ -5,10 +5,17 @@ import { styled } from 'styled-components'
 import CommonContext from '../contexts/CommonContext'
 import sizes from '../styles/sizes'
 import colors from '../styles/colors'
-const { medium, big } = sizes
+import type { CommonType } from '../types/styledType'
+const { big, medium } = sizes
 const { dark } = colors
 
-const _MainTitle = ({ children, className }) => {
+const _MainTitle = ({
+  children,
+  className,
+}: {
+  children: string
+  className?: string
+}) => {
   const {
     actions: { setTitle },
   } = useContext(CommonContext)
@@ -20,7 +27,7 @@ const _MainTitle = ({ children, className }) => {
   return <h1 className={className}>{children}</h1>
 }
 
-export const MainTitle = styled(_MainTitle)`
+export const MainTitle = styled(_MainTitle)<CommonType>`
   padding: 0 10px 15px;
   margin: 0 0 25px;
   font-size: ${big};
@@ -28,7 +35,7 @@ export const MainTitle = styled(_MainTitle)`
   color: ${dark};
 `
 
-export const SubTitle = styled.h2`
+export const SubTitle = styled.h2<CommonType>`
   padding: 0;
   margin: 0 0 15px;
   font-size: ${medium};
