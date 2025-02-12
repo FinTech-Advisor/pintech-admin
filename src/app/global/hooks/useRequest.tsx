@@ -1,7 +1,11 @@
-'use client'
-import useSWR from "swr"
-import { fetcher } from "../libs/utils"
+// useSWR 용
 
-export default function useRequest(url){
-    return useSWR(url, fetcher)
+'use client'
+
+import { fetcher } from '../libs/utils'
+import useSWR from 'swr'
+
+export default function useRequest(url) {
+
+  return useSWR(url, fetcher)
 }

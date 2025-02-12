@@ -240,4 +240,4 @@ export const getUserInfo = async () => {
     // cookie.delete('token')
     console.error(err)
   }
-}
+} 

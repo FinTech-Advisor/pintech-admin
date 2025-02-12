@@ -22,6 +22,7 @@ const commonStyle = css`
   }
 `
 
+/* 입력 항목 */
 export const Input = styled.input<CommonType>`
   ${commonStyle}
   height: 40px;
@@ -69,18 +70,18 @@ const Select_ = ({
         options.map(({ value, label }) => (
           <option key={value + '_' + label} value={value}>
             {label}
-          
           </option>
         ))}
     </select>
   )
 }
+
 export const Select = styled(Select_)<SelectProps>`
-${commonStyle}
-padding: 0;
-height: 40px;
-border-color: ${({ color }) => (color ? colors[color] ?? light : light)};
-${({ width }) => css`
-  width: ${width}px;
-`}
+  ${commonStyle}
+  padding: 0;
+  height: 40px;
+  border-color: ${({ color }) => (color ? colors[color] ?? light : light)};
+  ${({ width }) => css`
+    width: ${width}px;
+  `}
 `

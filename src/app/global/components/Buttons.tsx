@@ -13,8 +13,14 @@ const commonStyle = css`
   width: 100%;
   height: 35px;
   border-radius: 2px;
+  cursor: pointer;
+
   & + & {
     margin-left: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.7;
   }
 `
 
@@ -72,6 +78,7 @@ export const Button = styled.button<CommonType>`
     css`
       width: ${width}px;
     `}
+
   ${({ color }) => changeColor(color)}
 `
 
@@ -118,6 +125,10 @@ export const ButtonGroup = styled.div<CommonType>`
   display: flex;
   width: 100%;
 
+  &.center {
+    margin: 0 auto;
+  }
+
   button {
     width: 0;
     flex-grow: 1;
@@ -130,6 +141,8 @@ export const ButtonGroup = styled.div<CommonType>`
   ${({ width }) =>
     width &&
     css`
-      width: ${width};
+      width: ${width}px;
     `}
+
+  ${({ color }) => changeColor(color)}
 `

@@ -1,3 +1,4 @@
+// Context - 전역 공유하는 값
 'use client'
 
 import { createContext, useState } from 'react'
@@ -23,7 +24,7 @@ type ContextType = {
 
 const CommonContext = createContext<ContextType>({})
 
-const CommonProvider = ({ children }) => {
+const CommonProvider = ( children ) => {
   const { isAdmin } = useUser()
 
   const [title, setTitle] = useState<string | undefined>()

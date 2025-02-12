@@ -16,7 +16,7 @@ const EditPage = ({ params }) => {
     <>
       <MainTitle>게시판 설정 수정</MainTitle>
       <ConfigContainer bid={bid} />
-    </>,
+    </>
   )
 }
 

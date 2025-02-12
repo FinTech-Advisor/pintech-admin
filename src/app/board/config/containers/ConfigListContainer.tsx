@@ -20,9 +20,15 @@ type SearchType = {
 
 const ConfigListContainer = () => {
   useMenuCode('board', 'configList')
+
+  // 실제 Submit할때 반영, search 변경시에만 Rerendering
   const [search, setSearch] = useState<SearchType>({})
+
+  // 임시로 값 담는 곳
   const [_search, _setSearch] = useState<SearchType>({})
+
   const [items, setItems] = useState([])
+
   const [pagination, setPagination] = useState()
 
   const qs = toQueryString(search)
@@ -31,21 +37,26 @@ const ConfigListContainer = () => {
     `/board/api/config/list${qs.trim() ? '?' + qs : ''}`,
   )
 
-  useEffect(() => {
-    if (data) {
-      setItems(data.data.items)
-      setPagination(data.data.pagination)
-    }
-  }, [data])
-
   const onChange = useCallback((e) => {
     _setSearch((_search) => ({ ..._search, [e.target.name]: e.target.value }))
   }, [])
 
+  useEffect(() => {
+    if (data) {
+      setItems(data.data.items)
+      setPagination(data.data.pagination)
+      console.log(data)
+    }
+  }, [data])
+
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault()
-      setSearch(_search)
+
+      console.log('_search', _search)
+
+      // Submit 했을때 Search 값을 새로운 객체로 깊은 복사해 교체하면서 Rerendering
+      setSearch({ ..._search })
     },
     [_search],
   )
@@ -58,7 +69,7 @@ const ConfigListContainer = () => {
   return (
     <>
       <ConfigSearch form={_search} onChange={onChange} onSubmit={onSubmit} />
-      {isLoading ? <Loading /> : <ConfigList />}
+      {isLoading ? <Loading /> : <ConfigList items={items} />}
       {pagination && (
         <Pagination pagination={pagination} onClick={onPageClick} />
       )}

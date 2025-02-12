@@ -1,7 +1,9 @@
 'use client'
-import { styled } from 'styled-components'
+
+import styled from 'styled-components'
 import colors from '../styles/colors'
 import type { CommonType } from '../types/styledType'
+
 const { dark } = colors
 
 export const MainContentBox = styled.section<CommonType>`

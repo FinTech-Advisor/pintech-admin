@@ -1,21 +1,19 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
+
 import { useContext, useLayoutEffect } from 'react'
-import { styled } from 'styled-components'
+import styled from 'styled-components'
 import CommonContext from '../contexts/CommonContext'
 import sizes from '../styles/sizes'
 import colors from '../styles/colors'
 import type { CommonType } from '../types/styledType'
-const { big, medium } = sizes
+
+const { medium, big } = sizes
+
 const { dark } = colors
 
-const _MainTitle = ({
-  children,
-  className,
-}: {
-  children: string
-  className?: string
-}) => {
+// children = 사이트 제목
+const _MainTitle = ({ children, className } : {children : string, className?: string}) => {
   const {
     actions: { setTitle },
   } = useContext(CommonContext)
@@ -35,7 +33,7 @@ export const MainTitle = styled(_MainTitle)<CommonType>`
   color: ${dark};
 `
 
-export const SubTitle = styled.h2<CommonType>`
+export const SubTitle = styled.h2`
   padding: 0;
   margin: 0 0 15px;
   font-size: ${medium};

@@ -1,17 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import classNames from 'classnames'
-import colors from '../styles/colors'
-import sizes from '../styles/sizes'
-const { dark, white } = colors
-const { medium } = sizes
-
 import {
   MdFirstPage,
   MdLastPage,
   MdNavigateNext,
   MdNavigateBefore,
 } from 'react-icons/md'
+import colors from '../styles/colors'
+import sizes from '../styles/sizes'
+
+const { secondary, white } = colors
+
+const { medium } = sizes
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,16 +30,17 @@ const Wrapper = styled.div`
     line-height: 33px;
     text-align: center;
     font-size: ${medium};
-    border: 1px solid ${dark};
+    border: 1px solid ${secondary};
     border-radius: 3px;
     cursor: pointer;
+    color: ${secondary};
   }
   .page + .page {
     margin-left: 3px;
   }
 
   .page.on {
-    background: ${dark};
+    background: ${secondary};
     color: ${white};
     border: none;
   }

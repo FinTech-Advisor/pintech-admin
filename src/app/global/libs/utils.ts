@@ -1,3 +1,6 @@
+/**
+ * 객체 값을 QueryString으로 변환하는 편의 기능
+ */
 export const toQueryString = (data: object) => {
   const qs = []
   for (const [key, value] of Object.entries(data)) {
@@ -11,4 +14,5 @@ export const toQueryString = (data: object) => {
   return qs.join('&')
 }
 
+// useSWR용
 export const fetcher = (url) => fetch(url).then((r) => r.json())

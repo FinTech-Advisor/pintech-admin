@@ -14,10 +14,11 @@ export default function StyledComponentsRegistry({
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())
 
   useServerInsertedHTML(() => {
-    const styles = styledComponentsStyleSheet.getStyleElement()
-    styledComponentsStyleSheet.instance.clearTag()
-    return <>{styles}</>
-  })
+    if (typeof window !== 'undefined') return null; // ✅ 클라이언트에서는 실행하지 않음.
+  
+    const styles = styledComponentsStyleSheet.getStyleElement();
+    return Array.isArray(styles) ? <>{styles}</> : <>{[styles]}</>;
+  });
 
   if (typeof window !== 'undefined') return <>{children}</>
 
