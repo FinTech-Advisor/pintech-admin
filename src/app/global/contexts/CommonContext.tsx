@@ -24,7 +24,7 @@ type ContextType = {
 
 const CommonContext = createContext<ContextType>({})
 
-const CommonProvider = ( children ) => {
+const CommonProvider = ({ children }: { children: React.ReactNode }) => {
   const { isAdmin } = useUser()
 
   const [title, setTitle] = useState<string | undefined>()

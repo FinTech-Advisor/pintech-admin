@@ -62,15 +62,18 @@ const Side = () => {
         <BsFilePostFill />
         게시판 관리
       </a>
-      <a href="/bank/list" className={classNames({ on: menuCode === 'bank' })}>
+      <a href="/bank/list" 
+      className={classNames({ on: menuCode === 'bank' })}>
         <GiBank />
         은행 관리
       </a>
-      <a href="/card/list" className={classNames({ on: menuCode === 'card' })}>
+      <a href="/card/list" 
+      className={classNames({ on: menuCode === 'card' })}>
         <FaCreditCard />
         카드 관리
       </a>
-      <a href="/loan/list" className={classNames({ on: menuCode === 'loan' })}>
+      <a href="/loan/list" 
+      className={classNames({ on: menuCode === 'loan' })}>
         <GiMoneyStack />
         대출 관리
       </a>
