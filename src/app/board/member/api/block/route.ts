@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import apiRequest from '@/app/global/libs/apiRequest'
 
 export async function GET(request: NextRequest) {
-  const qs = request.nextUrl.searchParams.toString()
-
-  const apiUrl =
-    process.env.API_URL + `/email/admin/list${qs.trim() ? '?' + qs : ''}`
+  const apiUrl = process.env.API_URL + `/member/admin/statuses`
 
   const res = await apiRequest(apiUrl)
 
@@ -18,4 +15,5 @@ export async function GET(request: NextRequest) {
   }
 
   // 실패시
-  return NextResponse.json({ sucess: false })}
+  return NextResponse.json({ sucess: false })
+}

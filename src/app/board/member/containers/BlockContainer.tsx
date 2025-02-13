@@ -1,15 +1,13 @@
-'use client'
 import React, { useState, useCallback, useEffect } from 'react'
-import ListForm from '../components/ListForm'
 import useMenuCode from '@/app/global/hooks/useMenuCode'
-import ListSearch from '../components/ListSearch'
 import { toQueryString } from '@/app/global/libs/utils'
 import useRequest from '@/app/global/hooks/useRequest'
 import { BulletList } from 'react-content-loader'
+import MemberSearch from '../components/MemberSearch'
+import BlockForm from '../components/BlockForm'
 import Pagination from '@/app/global/components/Pagination'
 
 const Loading = () => <BulletList />
-
 type SearchType = {
   sopt?: string
   skey?: string
@@ -17,10 +15,8 @@ type SearchType = {
   limit?: number
 }
 
-const ListSearchContainer = () => {
-  useMenuCode('email', 'listForm')
-
-  // 실제 Submit할때 반영, search 변경시에만 Rerendering
+const BlockContainer = () => {
+  useMenuCode('member', 'block')
   const [search, setSearch] = useState<SearchType>({})
 
   // 임시로 값 담는 곳
@@ -32,9 +28,7 @@ const ListSearchContainer = () => {
 
   const qs = toQueryString(search)
 
-  const { data, error, isLoading } = useRequest(
-    `/email/api/list${qs.trim() ? '?' + qs : ''}`,
-  )
+  const { data, error, isLoading } = useRequest(`/member/api/block`)
 
   const onChange = useCallback((e) => {
     _setSearch((_search) => ({ ..._search, [e.target.name]: e.target.value }))
@@ -42,7 +36,7 @@ const ListSearchContainer = () => {
 
   useEffect(() => {
     if (data) {
-      setItems(data.data.items)
+      setItems(data.data.data)
       setPagination(data.data.pagination)
     }
   }, [data])
@@ -50,10 +44,6 @@ const ListSearchContainer = () => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault()
-
-      console.log('_search', _search)
-
-      // Submit 했을때 Search 값을 새로운 객체로 깊은 복사해 교체하면서 Rerendering
       setSearch({ ..._search })
     },
     [_search],
@@ -64,10 +54,34 @@ const ListSearchContainer = () => {
     setSearch((search) => ({ ...search, page }))
   }, [])
 
+  const onClick = useCallback((seq, field, value) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.seq === seq ? { ...item, [field]: value } : item,
+      ),
+    )
+  }, [])
+
+  const onToggleCheck = useCallback((seq) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.seq === seq ? { ...item, checked: !item.checked } : item,
+      ),
+    )
+  }, [])
+
   return (
     <>
-      <ListSearch form={_search} onChange={onChange} onSubmit={onSubmit} />
-      {isLoading ? <Loading /> : <ListForm />}
+      <MemberSearch form={_search} onChange={onChange} onSubmit={onSubmit} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <BlockForm
+          form={items}
+          onClick={onClick}
+          onToggleCheck={onToggleCheck}
+        />
+      )}
       {pagination && (
         <Pagination pagination={pagination} onClick={onPageClick} />
       )}
@@ -75,4 +89,4 @@ const ListSearchContainer = () => {
   )
 }
 
-export default React.memo(ListSearchContainer)
+export default React.memo(BlockContainer)

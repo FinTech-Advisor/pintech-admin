@@ -35,6 +35,7 @@ const StyledForm = styled.form`
 
 const ConfigItem = ({ item }) => {
   const { bid, name, open } = item
+
   const frontUrl = process.env.NEXT_PUBLIC_FRONT_URL + `/board/list/${bid}`
 
   return (
@@ -42,6 +43,7 @@ const ConfigItem = ({ item }) => {
       <td></td>
       <td>{bid}</td>
       <td>{name}</td>
+      {/* 추후 Input 넣어서 name 수정가능하게 */}
       <td>
         <span>
           {open ? <MdRadioButtonChecked /> : <MdRadioButtonUnchecked />} 사용
@@ -50,10 +52,11 @@ const ConfigItem = ({ item }) => {
           {open ? <MdRadioButtonUnchecked /> : <MdRadioButtonChecked />} 미사용
         </span>
       </td>
+
       <td>
         <a href={'/board/config/edit/' + bid}>
           <SmallButton type="button" color="info" width={120}>
-            설정 수정
+            수정
           </SmallButton>
         </a>
         <a href={frontUrl} target="_blank">
