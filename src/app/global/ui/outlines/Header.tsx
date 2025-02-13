@@ -9,7 +9,7 @@ import { FaUserPlus, FaHome } from 'react-icons/fa'
 import classNames from 'classnames'
 import colors from '../../styles/colors'
 import sizes from '../../styles/sizes'
-import logo from '../../assets/images/logo2.png'
+import logo from '../../assets/images/logo.png'
 import useUser from '../../hooks/useUser'
 
 const { light } = colors
@@ -49,7 +49,7 @@ const StyledHeader = styled.header`
     .layout-width {
       display: flex;
       justify-content: space-between;
-      height: 150px;
+      height: 200px;
       align-items: center;
     }
   }
@@ -98,7 +98,7 @@ const Header = () => {
         <div className="layout-width">
           {/* 컨텐츠 영역 */}
           <Link href="/" className="logo">
-            <Image src={logo} alt="로고" priority={true} height={220} />
+            <Image src={logo} alt="로고" priority={true} height={100} />
           </Link>
         </div>
       </div>

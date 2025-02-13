@@ -29,7 +29,7 @@ const initialValue = {
   commentAuthority: 'ALL',
 }
 
-const ConfigContainer = ({ bid }: { bid?: string | undefined } | undefined) => {
+const ConfigContainer = ({ bid }: { bid?: string }) => {
   useMenuCode('board', 'configWrite')
 
   const [form, setForm] = useState(initialValue)

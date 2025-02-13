@@ -33,9 +33,9 @@ export const updateBoard = async (params, formData: FormData) => {
   }
 
   for (const [field, msg] of Object.entries(requiredFields)) {
-    const value = formData.get(field).toString()
+    const value = formData.get(field)
 
-    if (!value || !value.trim()) {
+    if (!value || !value.toString().trim()) {
       // 필수 항목 누락
 
       errors[field] = errors[field] ?? []

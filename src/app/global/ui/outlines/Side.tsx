@@ -51,7 +51,6 @@ const Side = () => {
         href="/member/list"
         className={classNames({ on: menuCode === 'member' })}
       >
-        <IoPersonCircleOutline />
         회원 관리
       </a>
 
@@ -59,33 +58,27 @@ const Side = () => {
         href="/board/config/list"
         className={classNames({ on: menuCode === 'board' })}
       >
-        <BsFilePostFill />
         게시판 관리
       </a>
       <a href="/bank/list" className={classNames({ on: menuCode === 'bank' })}>
-        <GiBank />
         은행 관리
       </a>
       <a href="/card/list" className={classNames({ on: menuCode === 'card' })}>
-        <FaCreditCard />
         카드 관리
       </a>
       <a href="/loan/list" className={classNames({ on: menuCode === 'loan' })}>
-        <GiMoneyStack />
         대출 관리
       </a>
       <a
         href="/message/list"
         className={classNames({ on: menuCode === 'message' })}
       >
-        <FaRegMessage />
         쪽지 관리
       </a>
       <a
         href="/email/list"
         className={classNames({ on: menuCode === 'email' })}
       >
-        <SiPorkbun />
         이메일 로그
       </a>
     </StyledMenus>

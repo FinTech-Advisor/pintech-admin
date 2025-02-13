@@ -8,7 +8,7 @@ import DeleteForm from '../components/DeleteForm'
 
 const Loading = () => <BulletList />
 
-const EditContainer = ({ seq }: { seq?: any | undefined } | undefined) => {
+const EditContainer = ({ seq }: { seq?: any }) => {
   const [form, setForm] = useState({})
 
   const { data, isLoading } = useRequest(`/member/api/info/${seq}`)

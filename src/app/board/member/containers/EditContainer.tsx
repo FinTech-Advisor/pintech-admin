@@ -14,7 +14,7 @@ import { notFound } from 'next/navigation'
 
 const Loading = () => <BulletList />
 
-const EditContainer = ({ seq }: { seq?: any | undefined } | undefined) => {
+const EditContainer = ({ seq }: { seq?: any }) => {
   const [form, setForm] = useState({})
 
   const { data, error, isLoading } = useRequest(`/member/api/info/${seq}`)
@@ -36,11 +36,14 @@ const EditContainer = ({ seq }: { seq?: any | undefined } | undefined) => {
     setForm((form) => ({ ...form, [e.target.name]: e.target.value }))
   }, [])
 
-  const onClick = useCallback((field, value) => {
-    setForm((form) => ({ ...form, [field]: value }))
-    console.log(field, value)
-    console.log(form)
-  }, [])
+  const onClick = useCallback(
+    (field, value) => {
+      setForm((form) => ({ ...form, [field]: value }))
+      console.log(field, value)
+      console.log(form)
+    },
+    [form],
+  )
 
   const onReset = useCallback(() => {
     ;(async () => {

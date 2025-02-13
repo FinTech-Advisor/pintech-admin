@@ -2,7 +2,7 @@
 
 // import loadable from '@loadable/component'
 // import WithUserContainer from './global/containers/WithUserContainer'
-import MainContainer from "./main/containers/MainContainer"
+import MainContainer from './main/containers/MainContainer'
 
 // const MainContainer = loadable(() => import('./main/containers/MainContainer'))
 

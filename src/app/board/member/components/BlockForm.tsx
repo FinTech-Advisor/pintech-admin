@@ -29,15 +29,12 @@ const StyledForm = styled.form`
     width: 100px;
   }
   th:nth-of-type(5) {
-    // 상태 -> 라디오버튼으로 할거임
     width: 150px;
   }
   th:nth-of-type(6) {
-    // 삭제하기버튼
     width: 150px;
   }
   th:nth-of-type(7) {
-    // 삭제하기버튼
     width: 150px;
   }
   span + span {
