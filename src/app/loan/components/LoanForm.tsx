@@ -3,12 +3,49 @@ import styled from 'styled-components'
 import { MdRadioButtonUnchecked, MdRadioButtonChecked } from 'react-icons/md'
 import { Input } from '@/app/global/components/FormComponents'
 import { BigButton } from '@/app/global/components/Buttons'
-// import colors from '@/app/global/styles/colors'
+import colors from '@/app/global/styles/colors'
 import Messages from '@/app/global/components/Messages'
 
-// const { primary, white, info } = colors
+const { secondary, dark } = colors
 
-const StyledForm = styled.form``
+const StyledForm = styled.form`
+  table {
+    border: 1px solid ${dark};
+    width: 100%;
+
+    tr {
+      border: 1px solid ${dark};
+
+      th {
+        background: ${secondary};
+        width: 150px;
+        height: 50px;
+      }
+
+      td {
+        input {
+          border: 1px solid ${dark};
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        textarea {
+          width: 100%;
+          min-height: 200px;
+          resize: none;
+        }
+      }
+    }
+  }
+
+  button {
+    margin-top: 30px;
+  }
+`
 
 const LoanForm = ({ form, onClick, onChange, actionState }) => {
   const [errors, formAction, isPending] = actionState
@@ -27,8 +64,8 @@ const LoanForm = ({ form, onClick, onChange, actionState }) => {
                   value={form?.loanName ?? ''}
                   onChange={onChange}
                 />
+                <Messages color="danger">{errors?.loanName}</Messages>
               </td>
-              <Messages color="danger">{errors?.loanName}</Messages>
             </tr>
             <tr>
               <th>대출 한도</th>
@@ -40,8 +77,8 @@ const LoanForm = ({ form, onClick, onChange, actionState }) => {
                   value={form?.limit ?? ''}
                   onChange={onChange}
                 />
+                <Messages color="danger">{errors?.limit}</Messages>
               </td>
-              <Messages color="danger">{errors?.limit}</Messages>
             </tr>
             <tr>
               <th>대출 카테고리</th>
@@ -53,8 +90,8 @@ const LoanForm = ({ form, onClick, onChange, actionState }) => {
                   value={form?.category ?? ''}
                   onChange={onChange}
                 />
+                <Messages color="danger">{errors?.category}</Messages>
               </td>
-              <Messages color="danger">{errors?.category}</Messages>
             </tr>
             <tr>
               <th>은행명</th>
@@ -66,8 +103,8 @@ const LoanForm = ({ form, onClick, onChange, actionState }) => {
                   value={form?.bankName ?? ''}
                   onChange={onChange}
                 />
+                <Messages color="danger">{errors?.bankName}</Messages>
               </td>
-              <Messages color="danger">{errors?.bankName}</Messages>
             </tr>
             <tr>
               <th>상환년도</th>
@@ -79,8 +116,8 @@ const LoanForm = ({ form, onClick, onChange, actionState }) => {
                   value={form?.repaymentYear ?? ''}
                   onChange={onChange}
                 />
+                <Messages color="danger">{errors?.repaymentYear}</Messages>
               </td>
-              <Messages color="danger">{errors?.repaymentYear}</Messages>
             </tr>
             <tr>
               <th>대출 설명</th>
@@ -91,8 +128,8 @@ const LoanForm = ({ form, onClick, onChange, actionState }) => {
                   value={form?.loanDescription ?? ''}
                   onChange={onChange}
                 />
+                <Messages color="danger">{errors?.loanDescription}</Messages>
               </td>
-              <Messages color="danger">{errors?.loanDescription}</Messages>
             </tr>
             <tr>
               <th>이자율</th>
@@ -104,8 +141,8 @@ const LoanForm = ({ form, onClick, onChange, actionState }) => {
                   value={form?.interestRate ?? ''}
                   onChange={onChange}
                 />
+                <Messages color="danger">{errors?.interestRate}</Messages>
               </td>
-              <Messages color="danger">{errors?.interestRate}</Messages>
             </tr>
 
             <tr>
@@ -122,7 +159,7 @@ const LoanForm = ({ form, onClick, onChange, actionState }) => {
                     사용
                   </span>
                   <span onClick={() => onClick('isOpen', false)}>
-                    {form?.gender === false ? (
+                    {form?.isOpen === false ? (
                       <MdRadioButtonChecked />
                     ) : (
                       <MdRadioButtonUnchecked />

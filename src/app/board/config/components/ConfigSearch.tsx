@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import type { CommonType } from '@/app/global/types/styledType'
+import { CommonType } from '@/app/global/types/styledType'
 import { TableCols } from '@/app/global/components/Tables'
 import { Input, Select } from '@/app/global/components/FormComponents'
+// import { Input } from '@/app/global/components/FormComponents'
+// import Select from 'react-select/base'
 import { BigButton } from '@/app/global/components/Buttons'
 import { FaSearch } from 'react-icons/fa'
 
 const StyledForm = styled.form<CommonType>`
   margin-bottom: 35px;
-
+  
   button[type='submit'] {
     display: block;
     margin: 15px auto 0;
@@ -31,10 +33,11 @@ const StyledForm = styled.form<CommonType>`
   }
 `
 
+// configSearch 내부에서 정의하면 렌더링될때마다 변수가 생기므로 밖에 정의하는 것이 일반적
 const options = [
-  { value: 'ALL', label: '통합검색' },
+  { value: 'ALL', label: '통합 검색' },
   { value: 'BID', label: '게시판 ID' },
-  { value: 'NAME', label: '게시판 이름' },
+  { value: 'NAME', label: '게시판명' },
 ]
 
 const ConfigSearch = ({ form, onChange, onSubmit }) => {
@@ -43,7 +46,7 @@ const ConfigSearch = ({ form, onChange, onSubmit }) => {
       <TableCols>
         <tbody>
           <tr>
-            <th>키워드</th>
+            <th>검색 분류</th>
             <td className="flex">
               <Select
                 name="sopt"
@@ -64,7 +67,7 @@ const ConfigSearch = ({ form, onChange, onSubmit }) => {
       </TableCols>
       <BigButton type="submit" color="primary" width={250}>
         <FaSearch />
-        검색하기
+        검색
       </BigButton>
     </StyledForm>
   )

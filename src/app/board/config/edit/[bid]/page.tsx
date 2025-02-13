@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import loadable from '@loadable/component'
 import { MainTitle } from '@/app/global/components/StyledTitle'
@@ -10,6 +11,7 @@ const ConfigContainer = loadable(
 
 // params = 경로변수인 bid
 const EditPage = ({ params }) => {
+  // React.use = Promise를 꺼내주는 기능 (React 18버전에서)
   const { bid } = React.use<{ bid: string }>(params)
 
   return WithUserContainer(

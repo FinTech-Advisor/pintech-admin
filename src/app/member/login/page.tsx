@@ -1,4 +1,5 @@
 'use client'
+
 import loadable from '@loadable/component'
 import WithGuestContainer from '@/app/global/containers/WithGuestContainer'
 import { MainContentBox } from '@/app/global/components/ContentBox'

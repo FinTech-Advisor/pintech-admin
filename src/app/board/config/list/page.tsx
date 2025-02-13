@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import loadable from '@loadable/component'
 import { MainTitle } from '@/app/global/components/StyledTitle'
