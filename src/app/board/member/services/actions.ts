@@ -51,7 +51,6 @@ export const processJoin = async (params, formData: FormData) => {
     name: '이름을 입력하세요.',
     password: '비밀번호를 입력하세요',
     confirmPassword: '비밀번호를 확인하세요',
-    // zipCode는 없을 경우 address로 대체하도록 따로 처리 예정
     phoneNumber: '휴대폰 번호를 입력하세요.',
     gender: '성별을 선택하세요.',
     birthDt: '생년월일을 선택하세요.',
