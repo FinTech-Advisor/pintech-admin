@@ -1,0 +1,79 @@
+'use client'
+import React, {
+  useLayoutEffect,
+  useState,
+  useCallback,
+  useActionState,
+} from 'react'
+import { getMember } from '../services/actions'
+import EditForm from '../components/EditForm'
+import { updateMember } from '../services/actions'
+import { BulletList } from 'react-content-loader'
+import useRequest from '@/app/global/hooks/useRequest'
+import { notFound } from 'next/navigation'
+
+const Loading = () => <BulletList />
+
+const EditContainer = ({ seq }: { seq?: any | undefined } | undefined) => {
+  const [form, setForm] = useState({})
+
+  const { data, error, isLoading } = useRequest(`/member/api/info/${seq}`)
+
+  useLayoutEffect(() => {
+    ;(async () => {
+      try {
+        const member = await getMember(seq)
+        setForm(member)
+      } catch (err) {
+        console.error(err)
+      }
+    })()
+  }, [seq])
+
+  const actionState = useActionState(updateMember, undefined)
+
+  const onChange = useCallback((e) => {
+    setForm((form) => ({ ...form, [e.target.name]: e.target.value }))
+  }, [])
+
+  const onClick = useCallback((field, value) => {
+    setForm((form) => ({ ...form, [field]: value }))
+    console.log(field, value)
+    console.log(form)
+  }, [])
+
+  const onReset = useCallback(() => {
+    ;(async () => {
+      try {
+        const member = await getMember(seq)
+        if (!member) {
+          setForm(member)
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    })()
+  }, [seq])
+
+  if (!form) {
+    notFound()
+  }
+
+  return (
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <EditForm
+          form={form}
+          onChange={onChange}
+          onClick={onClick}
+          actionState={actionState}
+          onReset={onReset}
+        />
+      )}
+    </>
+  )
+}
+
+export default React.memo(EditContainer)
