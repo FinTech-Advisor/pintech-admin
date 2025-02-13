@@ -9,21 +9,22 @@ import { SubTitle } from '@/app/global/components/StyledTitle'
 import colors from '@/app/global/styles/colors'
 import { CommonType } from '@/app/global/types/styledType'
 
-const { primary, white } = colors
+const { lavendor, dark , whitelavendor} = colors
 
 const StyledForm = styled.form<CommonType>`
   table {
     margin-bottom: 30px;
-
+    background: ${whitelavendor};
     th {
       width: 180px;
-      background: ${primary};
-      color: ${white};
+      background: ${lavendor};
+      color: ${dark};
     }
 
     td {
       & > * + * {
         margin-left: 20px;
+        
       }
     }
 
@@ -488,13 +489,13 @@ const ConfigForm = ({ form, onChange, onClick, onReset, actionState }) => {
       <ButtonGroup width={450} className="button-group center">
         <BigButton
           type="reset"
-          color="info"
+          color="white"
           disabled={isPending}
           onClick={onReset}
         >
           재입력
         </BigButton>
-        <BigButton type="submit" color="dark" disabled={isPending}>
+        <BigButton type="submit" color="darknavy" disabled={isPending}>
           {form?.mode === 'edit' ? '수정' : '등록'}
         </BigButton>
       </ButtonGroup>

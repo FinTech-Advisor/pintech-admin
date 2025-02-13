@@ -9,6 +9,8 @@ import {
 } from 'react-icons/md'
 
 const StyledForm = styled.form`
+  
+  }
   th:nth-of-type(1) {
     width: 40px;
   }
@@ -52,12 +54,12 @@ const ConfigItem = ({ item }) => {
       </td>
       <td>
         <a href={'/board/config/edit/' + bid}>
-          <SmallButton type="button" color="info" width={120}>
+          <SmallButton type="button" color="white" width={120}>
             설정 수정
           </SmallButton>
         </a>
         <a href={frontUrl} target="_blank">
-          <SmallButton type="button" color="primary" width={120}>
+          <SmallButton type="button" color="darknavy" width={120}>
             미리보기
           </SmallButton>
         </a>

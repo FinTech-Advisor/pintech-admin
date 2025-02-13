@@ -15,14 +15,14 @@ import { MdManageAccounts } from "react-icons/md";
 
 const { big } = sizes
 
-const { primary, info, white, dark } = colors
+const { lavendor, darklavendor, dark } = colors
 
 const StyledMenus = styled.aside`
   min-height: 800px;
-  background: ${primary};
+  background: ${lavendor};
 
   a {
-    color: ${white};
+    color: ${dark};
     font-size: ${big};
     display: block;
     height: 55px;
@@ -31,12 +31,12 @@ const StyledMenus = styled.aside`
   }
 
   a.on {
-    background: ${info};
+    background: ${darklavendor};
     color: ${dark};
   }
 
   a + a {
-    border-top: 2px solid ${info};
+    border-top: 2px solid ${darklavendor};
   }
 `
 
@@ -51,44 +51,36 @@ const Side = () => {
         href="/member/list"
         className={classNames({ on: menuCode === 'member' })}
       >
-        <MdManageAccounts/>
         회원 관리
       </a>
-
       <a
         href="/board/config/list"
         className={classNames({ on: menuCode === 'board' })}
       >
-        <BsFilePostFill />
         게시판 관리
       </a>
       <a href="/bank/list" 
       className={classNames({ on: menuCode === 'bank' })}>
-        <GiBank />
         은행 관리
       </a>
       <a href="/card/list" 
       className={classNames({ on: menuCode === 'card' })}>
-        <FaCreditCard />
         카드 관리
       </a>
       <a href="/loan/list" 
       className={classNames({ on: menuCode === 'loan' })}>
-        <GiMoneyStack />
         대출 관리
       </a>
       <a
         href="/message/setting/list"
         className={classNames({ on: menuCode === 'message' })}
       >
-        <FaRegMessage />
         쪽지 관리
       </a>
       <a
         href="/email/list"
         className={classNames({ on: menuCode === 'email' })}
       >
-        < RxActivityLog/>
         이메일 로그
       </a>
     </StyledMenus>
