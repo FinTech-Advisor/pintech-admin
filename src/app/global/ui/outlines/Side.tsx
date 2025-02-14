@@ -6,23 +6,23 @@ import styled from 'styled-components'
 import CommonContext from '../../contexts/CommonContext'
 import colors from '../../styles/colors'
 import sizes from '../../styles/sizes'
-import { SiPorkbun } from 'react-icons/si'
+import { RxActivityLog } from 'react-icons/rx'
 import { GiMoneyStack, GiBank } from 'react-icons/gi'
 import { FaCreditCard } from 'react-icons/fa'
 import { BsFilePostFill } from 'react-icons/bs'
 import { FaRegMessage } from 'react-icons/fa6'
-import { IoPersonCircleOutline } from 'react-icons/io5'
+import { MdManageAccounts } from 'react-icons/md'
 
 const { big } = sizes
 
-const { primary, info, white, dark } = colors
+const { lavendor, darklavendor, dark } = colors
 
 const StyledMenus = styled.aside`
   min-height: 800px;
-  background: ${primary};
+  background: ${lavendor};
 
   a {
-    color: ${white};
+    color: ${dark};
     font-size: ${big};
     display: block;
     height: 55px;
@@ -31,12 +31,12 @@ const StyledMenus = styled.aside`
   }
 
   a.on {
-    background: ${info};
+    background: ${darklavendor};
     color: ${dark};
   }
 
   a + a {
-    border-top: 2px solid ${info};
+    border-top: 2px solid ${darklavendor};
   }
 `
 
@@ -53,7 +53,6 @@ const Side = () => {
       >
         회원 관리
       </a>
-
       <a
         href="/board/config/list"
         className={classNames({ on: menuCode === 'board' })}
@@ -70,7 +69,7 @@ const Side = () => {
         대출 관리
       </a>
       <a
-        href="/message/list"
+        href="/message/setting/list"
         className={classNames({ on: menuCode === 'message' })}
       >
         쪽지 관리

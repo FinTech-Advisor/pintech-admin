@@ -12,6 +12,15 @@ const colors = {
   light: '#f8f9fa',
   dark: '#1B262C',
   white: '#fff',
+  gold: '#ffdc73',
+  lavendor: '#e6e6fa',
+  dustyrose: '#D8BFD8',
+  softgray: '#D3D3D3',
+  darklavendor: '#C8C8E6',
+  whitelavendor: '#F5F5FE',
+  darkpurple: '#B8A1D9',
+  darknavy: '#5D5F71',
+  whitegray: '#F0F0F5',
 }
 
 export const buttonColors = {
@@ -28,6 +37,9 @@ export const buttonColors = {
   light: [colors.light, colors.dark],
   dark: [colors.dark, colors.white],
   white: [colors.white, colors.dark],
+  lavendor: [colors.lavendor, colors.dark],
+  darkpurple: [colors.darkpurple, colors.dark],
+  darknavy: [colors.darknavy, colors.white],
 }
 
 export default colors

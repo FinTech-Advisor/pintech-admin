@@ -8,25 +8,26 @@ import classNames from 'classnames'
 import colors from '../styles/colors'
 import sizes from '../styles/sizes'
 
-const { primary, info, white } = colors
+const { dark, darklavendor, lavendor } = colors
 const { medium } = sizes
 
 const StyledMenu = styled.nav`
-  box-shadow: 2px 2px 5px ${info};
+  box-shadow: 2px 2px 5px ${lavendor};
   display: flex;
   border-radius: 3px;
   height: 45px;
   margin-bottom: 40px;
 
   a {
-    color: ${primary};
+    color: ${dark};
     line-height: 45px;
     font-size: ${medium};
     padding: 0 35px;
+    background: ${lavendor};
 
     &.on {
-      color: ${white};
-      background: ${primary};
+      color: ${dark};
+      background: ${darklavendor};
     }
   }
 `

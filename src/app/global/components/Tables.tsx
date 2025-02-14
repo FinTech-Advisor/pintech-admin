@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import colors from '../styles/colors'
 
-const { secondary, info } = colors
+const { lavendor, whitegray } = colors
 
 export const TableCols = styled.table`
   border-spacing: 0;
@@ -11,19 +11,19 @@ export const TableCols = styled.table`
   th {
     background: #e6e6e6;
     padding: 10px 20px;
-    border-bottom: 1px solid ${info};
+    border-bottom: 1px solid ${lavendor};
     text-align: left;
   }
 
   td {
     padding: 10px;
-    border-bottom: 1px solid ${info};
+    border-bottom: 1px solid ${lavendor};
   }
 
   tr:first-of-type {
     th,
     td {
-      border-top: 1px solid ${info};
+      border-top: 1px solid ${lavendor};
     }
   }
 
@@ -37,8 +37,8 @@ export const TableRows = styled.table`
   width: 100%;
   thead {
     th {
-      background: ${secondary};
-      color: #fff;
+      background: ${whitegray};
+      color: #000;
       padding: 10px;
       font-size: 1.15rem;
     }

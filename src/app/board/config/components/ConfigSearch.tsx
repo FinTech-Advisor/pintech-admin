@@ -7,17 +7,24 @@ import { Input, Select } from '@/app/global/components/FormComponents'
 // import Select from 'react-select/base'
 import { BigButton } from '@/app/global/components/Buttons'
 import { FaSearch } from 'react-icons/fa'
+import colors from '@/app/global/styles/colors'
+
+const { whitelavendor, lavendor } = colors
 
 const StyledForm = styled.form<CommonType>`
   margin-bottom: 35px;
-  
+
   button[type='submit'] {
     display: block;
     margin: 15px auto 0;
+    border-radius: 8px;
   }
-
+  tr {
+    background: ${whitelavendor};
+  }
   th {
     width: 180px;
+    background: ${lavendor};
   }
 
   .flex {
@@ -65,7 +72,7 @@ const ConfigSearch = ({ form, onChange, onSubmit }) => {
           </tr>
         </tbody>
       </TableCols>
-      <BigButton type="submit" color="primary" width={250}>
+      <BigButton type="submit" color="darkpurple" width={250}>
         <FaSearch />
         검색
       </BigButton>

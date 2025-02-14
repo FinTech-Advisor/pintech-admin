@@ -10,7 +10,7 @@ import {
 import colors from '../styles/colors'
 import sizes from '../styles/sizes'
 
-const { secondary, white } = colors
+const { whitegray, dark, softgray } = colors
 
 const { medium } = sizes
 
@@ -30,18 +30,18 @@ const Wrapper = styled.div`
     line-height: 33px;
     text-align: center;
     font-size: ${medium};
-    border: 1px solid ${secondary};
+    border: 1px solid ${softgray};
     border-radius: 3px;
     cursor: pointer;
-    color: ${secondary};
+    color: ${dark};
   }
   .page + .page {
     margin-left: 3px;
   }
 
   .page.on {
-    background: ${secondary};
-    color: ${white};
+    background: ${whitegray};
+    color: ${dark};
     border: none;
   }
 `
