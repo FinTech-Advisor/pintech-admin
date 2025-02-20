@@ -55,7 +55,7 @@ const ConfigListContainer = () => {
 
       console.log('_search', _search)
 
-      // Submit 했을때 Search 값을 새로운 객체로 깊은 복사해 교체하면서 Rerendering
+      // Submit 했을때 Search 값을 새로운 객체로 깊은 복사해 교체하면서 리-렌더링
       setSearch({ ..._search })
     },
     [_search],
@@ -69,7 +69,7 @@ const ConfigListContainer = () => {
   return (
     <>
       <ConfigSearch form={_search} onChange={onChange} onSubmit={onSubmit} />
-      {isLoading ? <Loading /> : <ConfigList items={items}/>}
+      {isLoading ? <Loading /> : <ConfigList items={items} />}
       {pagination && (
         <Pagination pagination={pagination} onClick={onPageClick} />
       )}
