@@ -1,16 +1,13 @@
-'use client'
-
 import React, { useState, useCallback, useEffect } from 'react'
-import ConfigList from '../components/ConfigList'
 import useMenuCode from '@/app/global/hooks/useMenuCode'
-import ConfigSearch from '../components/ConfigSearch'
 import { toQueryString } from '@/app/global/libs/utils'
 import useRequest from '@/app/global/hooks/useRequest'
 import { BulletList } from 'react-content-loader'
+import MemberSearch from '../components/MemberSearch'
+import BlockForm from '../components/BlockForm'
 import Pagination from '@/app/global/components/Pagination'
 
 const Loading = () => <BulletList />
-
 type SearchType = {
   sopt?: string
   skey?: string
@@ -18,11 +15,11 @@ type SearchType = {
   limit?: number
 }
 
-const ConfigListContainer = () => {
-  useMenuCode('board', 'configList')
-
+const BlockContainer = () => {
+  useMenuCode('member', 'block')
   const [search, setSearch] = useState<SearchType>({})
 
+  // 임시로 값 담는 곳
   const [_search, _setSearch] = useState<SearchType>({})
 
   const [items, setItems] = useState([])
@@ -31,9 +28,7 @@ const ConfigListContainer = () => {
 
   const qs = toQueryString(search)
 
-  const { data, error, isLoading } = useRequest(
-    `/board/api/config/list${qs.trim() ? '?' + qs : ''}`,
-  )
+  const { data, error, isLoading } = useRequest(`/member/api/block`)
 
   const onChange = useCallback((e) => {
     _setSearch((_search) => ({ ..._search, [e.target.name]: e.target.value }))
@@ -41,19 +36,14 @@ const ConfigListContainer = () => {
 
   useEffect(() => {
     if (data) {
-      setItems(data.data.items)
+      setItems(data.data.data)
       setPagination(data.data.pagination)
-      console.log(data)
     }
   }, [data])
 
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault()
-
-      console.log('_search', _search)
-
-      // Submit 했을때 Search 값을 새로운 객체로 깊은 복사해 교체하면서 Rerendering
       setSearch({ ..._search })
     },
     [_search],
@@ -64,10 +54,34 @@ const ConfigListContainer = () => {
     setSearch((search) => ({ ...search, page }))
   }, [])
 
+  const onClick = useCallback((seq, field, value) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.seq === seq ? { ...item, [field]: value } : item,
+      ),
+    )
+  }, [])
+
+  const onToggleCheck = useCallback((seq) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.seq === seq ? { ...item, checked: !item.checked } : item,
+      ),
+    )
+  }, [])
+
   return (
     <>
-      <ConfigSearch form={_search} onChange={onChange} onSubmit={onSubmit} />
-      {isLoading ? <Loading /> : <ConfigList items={items} />}
+      <MemberSearch form={_search} onChange={onChange} onSubmit={onSubmit} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <BlockForm
+          form={items}
+          onClick={onClick}
+          onToggleCheck={onToggleCheck}
+        />
+      )}
       {pagination && (
         <Pagination pagination={pagination} onClick={onPageClick} />
       )}
@@ -75,4 +89,4 @@ const ConfigListContainer = () => {
   )
 }
 
-export default React.memo(ConfigListContainer)
+export default React.memo(BlockContainer)

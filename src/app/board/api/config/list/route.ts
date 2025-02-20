@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import apiRequest from "@/app/global/libs/apiRequest"
 
 export async function GET(request: NextRequest) {
-    const qs = request.nextUrl.searchParams.toString(); // 문자열로 변환
+    const qs = request.nextUrl.searchParams.toString();
     const apiUrl = 
         process.env.API_URL + `/board/admin/config/list${qs ? '?' + qs : ''}`;
 

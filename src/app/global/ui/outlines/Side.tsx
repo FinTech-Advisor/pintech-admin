@@ -59,7 +59,7 @@ const Side = () => {
       >
         게시판 관리
       </a>
-      <a href="/bank/list" 
+      <a href="/bank/setting/list" 
       className={classNames({ on: menuCode === 'bank' })}>
         은행 관리
       </a>
@@ -77,12 +77,7 @@ const Side = () => {
       >
         쪽지 관리
       </a>
-      <a
-        href="/email/list"
-        className={classNames({ on: menuCode === 'email' })}
-      >
-        이메일 로그
-      </a>
+      
     </StyledMenus>
   )
 }
