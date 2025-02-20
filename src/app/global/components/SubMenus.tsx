@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useContext, useState, useEffect } from 'react'
 import CommonContext from '../contexts/CommonContext'
 import getMenus from '../datas/menus'
@@ -7,11 +8,11 @@ import classNames from 'classnames'
 import colors from '../styles/colors'
 import sizes from '../styles/sizes'
 
-const { dark, white } = colors
+const { dark, darklavendor, lavendor } = colors
 const { medium } = sizes
 
 const StyledMenu = styled.nav`
-  box-shadow: 2px 2px 5px ${dark};
+  box-shadow: 2px 2px 5px ${lavendor};
   display: flex;
   border-radius: 3px;
   height: 45px;
@@ -22,16 +23,18 @@ const StyledMenu = styled.nav`
     line-height: 45px;
     font-size: ${medium};
     padding: 0 35px;
+    background: ${lavendor};
 
     &.on {
-      color: ${white};
-      background: ${dark};
+      color: ${dark};
+      background: ${darklavendor};
     }
   }
 `
 
 const SubMenus = () => {
-  const [menus, setMenus] = useState()
+  const [menus, setMenus] = useState([])
+
   const {
     state: { menuCode, subMenuCode },
   } = useContext(CommonContext)
